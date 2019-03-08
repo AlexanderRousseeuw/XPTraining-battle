@@ -1,9 +1,9 @@
 package be.cegeka.battle;
 
-public class BareFist implements Weapon {
+public class TwoHandedSword implements Weapon {
     @Override
     public int getDamage() {
-        return 1;
+        return 5;
     }
 
     @Override

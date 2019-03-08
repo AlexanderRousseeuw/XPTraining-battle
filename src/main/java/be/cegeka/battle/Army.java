@@ -8,6 +8,14 @@ import java.util.Set;
 public class Army {
 
     private Set<Soldier> soldiers = new HashSet<>();
+    private IHeadquarters headquarters;
+
+    public Army() {
+    }
+
+    public Army(IHeadquarters headquarters) {
+        this.headquarters = headquarters;
+    }
 
     public void enlist(Soldier soldier) {
         this.soldiers.add(soldier);

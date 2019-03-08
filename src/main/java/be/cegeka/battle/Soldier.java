@@ -32,6 +32,10 @@ public class Soldier {
     }
 
     public Soldier fight(Soldier soldier) {
-        return soldier;
+        if (soldier.getWeapon().getDamage() > this.getWeapon().getDamage()) {
+            return soldier;
+        }
+
+        return this;
     }
 }

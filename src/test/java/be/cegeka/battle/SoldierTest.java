@@ -58,4 +58,11 @@ public class SoldierTest {
         Soldier soldier2 = new Soldier("name2", new Spear());
         assertThat(soldier.fight(soldier2)).isNotNull();
     }
+
+    @Test
+    public void strongestSoldierWins() {
+        Soldier soldier = new Soldier("name", new Axe());
+        Soldier soldier2 = new Soldier("name2", new BareFist());
+        assertThat(soldier.fight(soldier2)).isEqualTo(soldier);
+    }
 }

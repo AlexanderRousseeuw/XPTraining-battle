@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ArmyTest {
@@ -68,5 +69,43 @@ public class ArmyTest {
         army.enlist(soldier);
 
         Assertions.assertThat(soldier.getId()).isEqualTo(5);
+    }
+
+    @Test
+    public void whenArmyMemberDies_checkReportedId() {
+        Army army = new Army(headquarters);
+        Army army2 = new Army(headquarters);
+
+        Soldier soldier = new Soldier("Jef", new Axe());
+        Soldier soldier2 = new Soldier("Jos", new BareFist());
+
+        when(headquarters.reportEnlistment(soldier.getName())).thenReturn(5);
+        when(headquarters.reportEnlistment(soldier2.getName())).thenReturn(7);
+
+        army.enlist(soldier);
+        army2.enlist(soldier2);
+
+        army.fight(army2);
+
+        verify(headquarters).reportCasualty(7);
+    }
+
+    @Test
+    public void whenArmyWins_remainingNumberOfSoldiersIsReportedToHQ() {
+        Army army = new Army(headquarters);
+        Army army2 = new Army(headquarters);
+
+        Soldier soldier = new Soldier("Jef", new Axe());
+        Soldier soldier2 = new Soldier("Jos", new BareFist());
+
+        when(headquarters.reportEnlistment(soldier.getName())).thenReturn(5);
+        when(headquarters.reportEnlistment(soldier2.getName())).thenReturn(7);
+
+        army.enlist(soldier);
+        army2.enlist(soldier2);
+
+        army.fight(army2);
+
+        verify(headquarters).reportVictory(1);
     }
 }

@@ -36,13 +36,19 @@ public class Army {
 
             if (winner.equals(thisSoldier)) {
                 army.getSoldiers().remove(otherSoldier);
-            } else this.getSoldiers().remove(thisSoldier);
+                this.headquarters.reportCasualty(otherSoldier.getId());
+            } else {
+                this.getSoldiers().remove(thisSoldier);
+                this.headquarters.reportCasualty(thisSoldier.getId());
+            }
         }
 
         if (this.getSoldiers().size() == 0) {
+            this.headquarters.reportVictory(army.getSoldiers().size());
             return army;
+        } else {
+            this.headquarters.reportVictory(this.getSoldiers().size());
+            return this;
         }
-
-        return this;
     }
 }

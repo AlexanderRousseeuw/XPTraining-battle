@@ -73,4 +73,5 @@ public class SoldierTest {
         Soldier soldier2 = new Soldier("name2", new Axe());
         assertThat(soldier.fight(soldier2)).isEqualTo(soldier);
     }
+
 }

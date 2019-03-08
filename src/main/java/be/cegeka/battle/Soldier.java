@@ -30,4 +30,8 @@ public class Soldier {
     public Weapon getWeapon() {
         return this.weapon;
     }
+
+    public Soldier fight(Soldier soldier) {
+        return soldier;
+    }
 }

@@ -33,4 +33,29 @@ public class SoldierTest {
         Soldier soldier = new Soldier("name");
         assertThat(soldier.getWeapon()).isInstanceOf(BareFist.class);
     }
+
+    @Test
+    public void canGiveSoldierAxe() {
+        Soldier soldier = new Soldier("name", new Axe());
+        assertThat(soldier.getWeapon()).isInstanceOf(Axe.class);
+    }
+
+    @Test
+    public void canGiveSoldierSword() {
+        Soldier soldier = new Soldier("name", new Sword());
+        assertThat(soldier.getWeapon()).isInstanceOf(Sword.class);
+    }
+
+    @Test
+    public void canGiveSoldierSpear() {
+        Soldier soldier = new Soldier("name", new Spear());
+        assertThat(soldier.getWeapon()).isInstanceOf(Spear.class);
+    }
+
+    @Test
+    public void soldierCanFightAnotherSoldier() {
+        Soldier soldier = new Soldier("name", new Spear());
+        Soldier soldier2 = new Soldier("name2", new Spear());
+        assertThat(soldier.fight(soldier2)).isNotNull();
+    }
 }

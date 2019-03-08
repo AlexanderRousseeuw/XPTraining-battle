@@ -65,4 +65,12 @@ public class SoldierTest {
         Soldier soldier2 = new Soldier("name2", new BareFist());
         assertThat(soldier.fight(soldier2)).isEqualTo(soldier);
     }
+
+    @Test
+    public void ifEquallyStrongSoldiers_thenAttackerWins() {
+        Soldier soldier = new Soldier("name", new Axe());
+        Soldier soldier2 = new Soldier("name2", new Axe());
+        assertThat(soldier.fight(soldier2)).isEqualTo(soldier);
+    }
+
 }

@@ -8,6 +8,8 @@ public class Soldier {
 
     private String name;
     private Weapon weapon;
+    private int id;
+
 
     public Soldier(String name) {
         Validate.isTrue(isNotBlank(name));
@@ -22,6 +24,7 @@ public class Soldier {
         this.name = name;
         this.weapon = weapon;
     }
+
 
     String getName() {
         return this.name;
@@ -38,4 +41,13 @@ public class Soldier {
 
         return this;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

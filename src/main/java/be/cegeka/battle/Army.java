@@ -18,6 +18,7 @@ public class Army {
     }
 
     public void enlist(Soldier soldier) {
+        soldier.setId(headquarters.reportEnlistment(soldier.getName()));
         this.soldiers.add(soldier);
     }
 
